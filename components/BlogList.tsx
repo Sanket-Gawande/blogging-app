@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type CardProps = {
   img: string;
@@ -6,7 +7,7 @@ type CardProps = {
 };
 
 const Card = ({ img, title }: CardProps) => (
-  <div className="w-full p-4 mb-8">
+  <Link href={`/blog/${title.toLowerCase().replaceAll(' ', '-')}`} className="w-full p-4 mb-8">
     <div className="flex flex-col gap-4 cursor-pointer">
       <Image
         src={img}
@@ -17,7 +18,7 @@ const Card = ({ img, title }: CardProps) => (
       />
       <h2 className="text-xl line-clamp-2">{title}</h2>
     </div>
-  </div>
+  </Link>
 );
 
 const BlogList = () => {

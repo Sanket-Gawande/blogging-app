@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="bottom-0 lg:text-left bg-black text-[#dddddd] mt-auto px-4 max-w-7xl mx-auto"
+      className="bottom-0 sticky top-full lg:text-left bg-black text-[#dddddd] mt-auto px-4 max-w-7xl mx-auto"
     >
       <div className="flex justify-center items-center lg:justify-between py-6">
         <div className="mr-12 hidden lg:block">
