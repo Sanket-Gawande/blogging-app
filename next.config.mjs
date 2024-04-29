@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/blog/:path*",
+        destination: "https://baahi.xomoy.com/:path*act", // Proxy to Backend
+      },
+    ];
+  },
   images: {
-    domains: ["images.unsplash.com"],
+    remotePatterns: [{ hostname: "images.unsplash.com" }],
   },
 };
 
