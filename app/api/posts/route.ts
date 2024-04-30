@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
+    return {msg: "Hello"}
     try {
       const { posts, error } = await getPosts();
       if (error) throw new Error(error);
