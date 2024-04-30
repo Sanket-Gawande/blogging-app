@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "http-proxy": "^1.18.1",
     "@tanstack/react-query": "^4.35.3",
     "@trpc/client": "^10.45.2",
     "@trpc/react-query": "^10.45.2",
     "@trpc/server": "^10.45.2",
-    "mongoose": "^8.3.2",
+    "http-proxy": "^1.18.1",
+    "mongodb": "^6.5.0",
     "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18"
