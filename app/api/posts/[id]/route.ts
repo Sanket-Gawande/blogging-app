@@ -16,7 +16,7 @@ export async function GET(
       .populate({
         path: "author",
         model: User,
-        select: "name profilePhoto",
+        select: "-_id name profilePhoto",
       });
     return NextResponse.json({ post });
   } catch (error) {

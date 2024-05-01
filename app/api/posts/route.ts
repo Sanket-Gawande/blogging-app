@@ -9,7 +9,7 @@ export async function GET(req: Request) {
     const posts = await Post.find({}).select("-_id -__v").limit(15).populate({
       path: "author",
       model: User,
-      select: "name profilePhoto",
+      select: "-_id name profilePhoto",
     });
     return NextResponse.json({ posts });
   } catch (error) {

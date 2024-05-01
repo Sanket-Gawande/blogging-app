@@ -14,14 +14,13 @@ const PostPage = async () => {
 
   // Post structure:
   // "post": {
-  //     "postId": "BKsJvV22iS",
-  //     "title": "First post",
-  //     "content": "Dummy content",
-  //     "thumbnail": "https://res.cloudinary.com/dokbqizib/image/upload/v1714561657/author/qbcsqw3zhky85uk89io0.png",
+  //     "postId": String,
+  //     "title": String,
+  //     "content": String,
+  //     "thumbnail": String,
   //     "author": {
-  //         "_id": "662b6209e0cf090483940631",
-  //         "name": "Jay Pokale",
-  //         "profilePhoto": "https://res.cloudinary.com/dokbqizib/image/upload/v1714119177/author/bc44cug9izt9czifegtl.jpg"
+  //         "name": String,
+  //         "profilePhoto": String
   //     },
   //     "createdAt": "2024-05-01T11:07:38.496Z",
   //     "updatedAt": "2024-05-01T11:07:38.496Z"
