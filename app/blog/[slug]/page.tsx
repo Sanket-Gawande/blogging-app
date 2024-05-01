@@ -2,14 +2,15 @@ import { Metadata, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
-const getPost = async () => {
-  const id = "BKsJvV22iS";
+const getPost = async (slug: string) => {
+  const id = slug.slice(slug.length - 10);
   const post = await fetch(`${process.env.MAIN_URI}/api/posts/${id}`);
   return post;
 };
 
-const PostPage = async () => {
-  const data = await getPost();
+const PostPage = async ({ params }: { params: { slug: string } }) => {
+  const { slug } = params;
+  const data = await getPost(slug);
   const { post } = await data.json();
 
   // Post structure:
