@@ -1,9 +1,13 @@
+import Link from "next/link";
+
 const Header = () => {
   return (
     <header className="sticky top-0 backdrop-filter backdrop-blur-sm text-gray-300 mx-auto max-w-7xl py-2 h-12 z-10">
       <div className="flex items-center justify-between px-4">
         <div className="flex-shrink-0">
-          <h1 className="text-xl font-bold">Blog</h1>
+          <Link href={"/"} className="text-xl font-bold">
+            Blog
+          </Link>
         </div>
         <nav>
           <ul className="flex space-x-4">

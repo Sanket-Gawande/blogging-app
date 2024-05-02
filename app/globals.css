@@ -2,3 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "monospace";
+  src: url("/font/mono.ttf") format("truetype");
+}
+
+#__markdown_content__ code {
+  font-family: "monospace";
+  width: 100%;
+  overflow: auto;
+  display: block;
+  text-wrap: pretty;
+  white-space-collapse: preserve-breaks;
+  color: rgb(0, 199, 0);
+  background: #121212;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+#__markdown_content__ p {
+  opacity: 0.8;
+  font-size: 1rem;
+}
+
+#__markdown_content__ a {
+  text-decoration: underline;
+  display: inline-block;
+}
+#__markdown_content__ h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+@media screen and (max-width: 768px) {
+  #__markdown_content__ h2 {
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+}
+#__markdown_content__ h3,
+#__markdown_content__ h5,
+#__markdown_content__ h4 {
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #eee;
+}
