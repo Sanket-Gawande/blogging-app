@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function GET(req: Request) {
   try {
     await connectMongo();
-    const posts = await Post.find({}).select("-_id -__v").limit(15).populate({
+    const posts = await Post.find({}).select("-_id -__v -content").limit(15).populate({
       path: "author",
       model: User,
       select: "-_id name profilePhoto",
