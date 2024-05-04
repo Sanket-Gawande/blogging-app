@@ -1,16 +1,19 @@
 import Post from "@/lib/models/post.model";
 import User from "@/lib/models/user.model";
 import connectMongo from "@/lib/mongoose";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   try {
     await connectMongo();
-    const posts = await Post.find({}).select("-_id -__v -content").limit(15).populate({
-      path: "author",
-      model: User,
-      select: "-_id name profilePhoto",
-    });
+    const posts = await Post.find({})
+      .select("-_id -__v -content")
+      .limit(15)
+      .populate({
+        path: "author",
+        model: User,
+        select: "-_id name profilePhoto",
+      });
     return NextResponse.json({ posts });
   } catch (error) {
     return NextResponse.json({ message: error }, { status: 400 });
