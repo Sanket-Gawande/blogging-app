@@ -8,14 +8,19 @@ const getPosts = async () => {
 };
 
 const Card = ({ post }: any) => (
-  <Link href={`/blog/${post.postId}`} className="w-full p-4 mb-8">
+  <Link
+    href={`/blog/${post.postId}/${post.title
+      .toLowerCase()
+      .replaceAll(" ", "-")}`}
+    className="w-full mb-8"
+  >
     <div className="flex flex-col gap-3 cursor-pointer">
       <Image
         alt={post.title}
         src={post.thumbnail}
         width={512}
         height={288}
-        className="border border-gray-800 rounded-lg w-full aspect-video object-cover"
+        className="border border-gray-600 rounded-md w-full aspect-video object-cover"
       />
       <h2 className="text-xl line-clamp-2 text-white font-medium">
         {post.title}
@@ -29,6 +34,19 @@ const Card = ({ post }: any) => (
           className="border border-gray-800 rounded-full aspect-square object-cover"
         />
         <h3 className="text-white text-sm">{post.author.name}</h3>
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 15 15"
+          fill="none"
+          className="-mx-2 mt-0.5"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.875 7.5C9.875 8.81168 8.81168 9.875 7.5 9.875C6.18832 9.875 5.125 8.81168 5.125 7.5C5.125 6.18832 6.18832 5.125 7.5 5.125C8.81168 5.125 9.875 6.18832 9.875 7.5Z"
+            fill="currentColor"
+          ></path>
+        </svg>
         <p className="text-gray-400 text-sm">{formatDate(post.createdAt)}</p>
       </div>
     </div>
@@ -40,9 +58,9 @@ const BlogList = async () => {
   const { posts } = await data.json();
 
   return (
-    <main className="mx-auto max-w-7xl px-4 text-[#dddddd]">
-      <h2 className="text-2xl my-4">Latest Posts</h2>
-      <section className="px-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 justify-center">
+    <main className="mx-auto mb-12 max-w-7xl px-4 text-[#dddddd]">
+      <h2 className="text-lg font-medium my-8">Latest Posts</h2>
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 justify-center">
         {posts.map((post: any, i: number) => (
           <Card key={i} post={post} />
         ))}

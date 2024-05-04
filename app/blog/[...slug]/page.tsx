@@ -2,6 +2,7 @@ import formatDate from "@/lib/formatDate";
 import { Metadata, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Markdown from "react-markdown";
 
 const getPost = async (slug: string) => {
   const id = slug.slice(slug.length - 10);
@@ -9,8 +10,9 @@ const getPost = async (slug: string) => {
   return post;
 };
 
-const PostPage = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+const PostPage = async ({ params }: { params: { slug: string[] } }) => {
+  const { slug: slugArr } = params;
+  const [slug] = slugArr;
   const data = await getPost(slug);
   const { post } = await data.json();
 
@@ -34,7 +36,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
         <title>{post.title}</title>
         <html lang="en"></html>
       </Head>
-      <section className="text-white mt-8 md:mt-12 lg:mt-20 space-y-4 md:space-y-8">
+      <section className="text-white mt-8 mb-20 md:mt-12 lg:mt-20 space-y-4 md:space-y-8">
         <p className="text-center text-slate-11 text-sm">
           <time dateTime={post.createdAt}>{formatDate(post.createdAt)}</time>
         </p>
@@ -58,22 +60,11 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
           height={500}
           className="aspect-[16/8] object-cover overflow-hidden mx-auto max-w-[1200px] w-11/12 rounded-md border border-gray-900"
         />
-        <section className="w-11/12 mx-auto max-w-3xl leading-6 text-slate-11 py-4">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id enim
-            laudantium rerum nemo ex odit, corrupti, quas possimus sunt quisquam
-            quo alias consequatur, numquam corporis. Veritatis ad ipsa rem
-            veniam vel possimus vero laborum, magnam non animi obcaecati? Alias
-            perferendis officiis id ullam placeat, itaque cumque delectus soluta
-            molestias numquam voluptatem repellendus iusto commodi vero ex
-            quaerat voluptatum neque doloribus nulla tempore atque pariatur ab.
-            Totam, delectus, nesciunt, dicta voluptas similique sint nihil
-            dolorem laudantium voluptatum optio deserunt adipisci accusantium.
-            Aut, alias! Assumenda quod odit eveniet veritatis non? Obcaecati,
-            consequatur placeat molestias facilis earum aut culpa reiciendis
-            voluptate officia, sed odio, alias inventore ad. Consequuntur
-            officia eius, doloribus delectus tempore eveniet.
-          </p>
+        <section
+          id="__markdown_content__"
+          className="w-11/12 mx-auto space-y-6 max-w-3xl leading-6 text-slate-11 py-4"
+        >
+          <Markdown>{post.content}</Markdown>
         </section>
       </section>
     </>
