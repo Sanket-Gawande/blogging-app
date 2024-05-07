@@ -1,6 +1,3 @@
-import Post from "@/lib/models/post.model";
-import connectMongo from "@/lib/mongoose";
-
 export const revalidate = 3600;
 
 export default async function sitemap() {
