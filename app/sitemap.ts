@@ -23,7 +23,6 @@ export default async function sitemap() {
   return [
     {
       url: uri,
-      changeFrequency: "yearly",
       priority: 1,
     },
     {
