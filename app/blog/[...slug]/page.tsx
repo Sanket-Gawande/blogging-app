@@ -3,6 +3,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Markdown from "react-markdown";
 
+export const revalidate = 3600;
+
 const getPost = async (slug: string) => {
   const id = slug.slice(slug.length - 10);
   const post = await fetch(`${process.env.MAIN_URI}/api/posts/${id}`);

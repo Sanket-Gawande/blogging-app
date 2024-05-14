@@ -2,6 +2,8 @@ import formatDate from "@/lib/formatDate";
 import Image from "next/image";
 import Link from "next/link";
 
+export const revalidate = 3600;
+
 const getPosts = async () => {
   const posts = await fetch(`${process.env.MAIN_URI}/api/posts`);
   return posts;
