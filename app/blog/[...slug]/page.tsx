@@ -1,5 +1,4 @@
 import formatDate from "@/lib/formatDate";
-import { Metadata, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Markdown from "react-markdown";
@@ -15,20 +14,6 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
   const [slug] = slugArr;
   const data = await getPost(slug);
   const { post } = await data.json();
-
-  // Post structure:
-  // "post": {
-  //     "postId": String,
-  //     "title": String,
-  //     "content": String,
-  //     "thumbnail": String,
-  //     "author": {
-  //         "name": String,
-  //         "profilePhoto": String
-  //     },
-  //     "createdAt": "2024-05-01T11:07:38.496Z",
-  //     "updatedAt": "2024-05-01T11:07:38.496Z"
-  // }
 
   return (
     <>
@@ -56,9 +41,9 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
         <Image
           alt={post.title}
           src={post.thumbnail}
-          width={1200}
-          height={500}
-          className="aspect-[16/8] object-cover overflow-hidden mx-auto max-w-[1200px] w-11/12 rounded-md border border-gray-900"
+          width={1280}
+          height={720}
+          className="aspect-video object-cover overflow-hidden mx-auto max-w-[1200px] w-11/12 rounded-md border border-gray-900"
         />
         <section
           id="__markdown_content__"
