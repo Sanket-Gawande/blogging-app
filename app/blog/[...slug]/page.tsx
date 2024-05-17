@@ -5,6 +5,21 @@ import Markdown from "react-markdown";
 import rangeParser from "parse-numeric-range";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
+import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
+import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
+import scss from "react-syntax-highlighter/dist/cjs/languages/prism/scss";
+import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
+import markdown from "react-syntax-highlighter/dist/cjs/languages/prism/markdown";
+import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
+
+SyntaxHighlighter.registerLanguage("tsx", tsx);
+SyntaxHighlighter.registerLanguage("typescript", typescript);
+SyntaxHighlighter.registerLanguage("javascript", js);
+SyntaxHighlighter.registerLanguage("scss", scss);
+SyntaxHighlighter.registerLanguage("bash", bash);
+SyntaxHighlighter.registerLanguage("markdown", markdown);
+SyntaxHighlighter.registerLanguage("json", json);
 
 export const revalidate = 3600;
 
@@ -20,11 +35,9 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
   const data = await getPost(slug);
   const { post } = await data.json();
 
-  const syntaxTheme = oneDark;
-
   const MarkdownComponents: object = {
     code({ node, inline, className, ...props }: any) {
-      const hasLang = /language-(\w+)/.exec(className || "");
+      const hasLang = className?.substring(9).toLowerCase();
       const hasMeta = node?.data?.meta;
 
       const applyHighlights: object = (applyHighlights: number) => {
@@ -45,8 +58,8 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
 
       return hasLang ? (
         <SyntaxHighlighter
-          style={syntaxTheme}
-          language={hasLang[1]}
+          style={oneDark}
+          language={hasLang}
           PreTag="div"
           className="codeStyle"
           showLineNumbers={true}
