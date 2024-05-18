@@ -4,21 +4,33 @@ import Image from "next/image";
 import Markdown from "react-markdown";
 import rangeParser from "parse-numeric-range";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
-import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import c from "react-syntax-highlighter/dist/cjs/languages/prism/c";
+import cpp from "react-syntax-highlighter/dist/cjs/languages/prism/cpp";
+import py from "react-syntax-highlighter/dist/cjs/languages/prism/python";
+import java from "react-syntax-highlighter/dist/cjs/languages/prism/java";
 import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
+import ts from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
+import go from "react-syntax-highlighter/dist/cjs/languages/prism/go";
+import jsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
+import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import scss from "react-syntax-highlighter/dist/cjs/languages/prism/scss";
 import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
-import markdown from "react-syntax-highlighter/dist/cjs/languages/prism/markdown";
+import md from "react-syntax-highlighter/dist/cjs/languages/prism/markdown";
 import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
 
+SyntaxHighlighter.registerLanguage("c", c);
+SyntaxHighlighter.registerLanguage("cpp", cpp);
+SyntaxHighlighter.registerLanguage("py", py);
+SyntaxHighlighter.registerLanguage("java", java);
+SyntaxHighlighter.registerLanguage("js", js);
+SyntaxHighlighter.registerLanguage("ts", ts);
+SyntaxHighlighter.registerLanguage("go", go);
+SyntaxHighlighter.registerLanguage("jsx", jsx);
 SyntaxHighlighter.registerLanguage("tsx", tsx);
-SyntaxHighlighter.registerLanguage("typescript", typescript);
-SyntaxHighlighter.registerLanguage("javascript", js);
 SyntaxHighlighter.registerLanguage("scss", scss);
 SyntaxHighlighter.registerLanguage("bash", bash);
-SyntaxHighlighter.registerLanguage("markdown", markdown);
+SyntaxHighlighter.registerLanguage("md", md);
 SyntaxHighlighter.registerLanguage("json", json);
 
 export const revalidate = 3600;
@@ -58,7 +70,7 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
 
       return hasLang ? (
         <SyntaxHighlighter
-          style={oneDark}
+          style={vscDarkPlus}
           language={hasLang}
           PreTag="div"
           className="codeStyle"
