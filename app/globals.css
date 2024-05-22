@@ -9,3 +9,44 @@
 * {
   font-family: "Inter", sans-serif;
 }
+#__markdown_content__ code {
+  font-family: "monospace";
+  color: inherit;
+  display: inline-block;
+  background: #1b1b1b;
+  padding: 0 0.35rem;
+  width: fit-content;
+  margin-bottom: -0.35rem;
+  border-radius: 0.25rem;
+}
+#__markdown_content__ div > code {
+  width: 100%;
+  overflow: auto;
+  display: block;
+  background: transparent;
+}
+#__markdown_content__ p {
+  font-size: 1rem;
+}
+
+#__markdown_content__ a {
+  text-decoration: underline;
+  display: inline-block;
+}
+#__markdown_content__ h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+#__markdown_content__ h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+#__markdown_content__ h3,
+#__markdown_content__ h5,
+#__markdown_content__ h4 {
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #eee;
+}
