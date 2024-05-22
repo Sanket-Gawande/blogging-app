@@ -9,7 +9,6 @@ export default async function sitemap() {
     const { posts } = await res.json();
     data = posts;
   } catch (error) {
-    console.log(error);
     data = [];
   }
 
